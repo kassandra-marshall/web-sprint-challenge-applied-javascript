@@ -1,16 +1,16 @@
 const Header = (title, date, temp) => {
-  const date = document.createElement('span');
-  const title = document.createElement('h1');
-  const temp = document.createElement('span');
-  const header = document.createElement('div');
+  const pageDate = document.createElement('span');
+  const pageTitle = document.createElement('h1');
+  const pageTemp = document.createElement('span');
+  const pageHeader = document.createElement('div');
 
-  date.classList.add('date');
-  temp.classList.add('temp');
-  header.classList.add('header');
+  pageDate.classList.add('date');
+  pageTemp.classList.add('temp');
+  pageHeader.classList.add('header');
 
-  title.textContent = title;
-  date.textContent = date;
-  temp.textContent = temp;
+  pageTitle.textContent = title;
+  pageDate.textContent = date;
+  pageTemp.textContent = temp;
 
   return header;
   
