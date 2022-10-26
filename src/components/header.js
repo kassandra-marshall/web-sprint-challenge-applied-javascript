@@ -12,7 +12,7 @@ const Header = (title, date, temp) => {
   pageDate.textContent = date;
   pageTemp.textContent = temp;
 
-  return header;
+  return pageHeader;
   
   // TASK 1
   // ---------------------
