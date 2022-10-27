@@ -1,3 +1,6 @@
+import axios from "axios";
+import { topics } from "../mocks/data";
+
 const Tabs = (topics) => {
   const topicDiv = document.createElement('div');
   topicDiv.classList.add('topics')
@@ -23,9 +26,17 @@ return topicDiv;
   // </div>
   //
 }
-const topics = ["javascript", "bootstrap", "technology", "jquery", "node.js"]
-console.log(Tabs(topics));
+// const topics = ["javascript", "bootstrap", "technology", "jquery", "node.js"]
+// console.log(Tabs(topics));
+
 const tabsAppender = (selector) => {
+  axios.get("http://localhost:5001/api/topics")
+  .then(res => {
+    document.querySelector(selector).appendChild(Tabs(res.data.topics));
+  })
+  .catch(err => {
+    console.log(err);
+  })
   // TASK 4
   // ---------------------
   // Implement this function which takes a css selector as its only argument.
