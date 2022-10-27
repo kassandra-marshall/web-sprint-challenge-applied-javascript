@@ -1,3 +1,6 @@
+const selector = "#header-container"
+const root = document.querySelector(selector)
+
 const Header = (title, date, temp) => {
   const pageDate = document.createElement('span');
   const pageTitle = document.createElement('h1');
@@ -11,9 +14,13 @@ const Header = (title, date, temp) => {
   pageTitle.textContent = title;
   pageDate.textContent = date;
   pageTemp.textContent = temp;
-
-  return pageHeader;
   
+  pageHeader.appendChild(pageDate);
+  pageHeader.appendChild(pageTitle);
+  pageHeader.appendChild(pageTemp);
+  
+  // root.appendChild(pageHeader);
+  return pageHeader;
   // TASK 1
   // ---------------------
   // Implement this function taking `title`, `date` and `temp` as its 3 args and returning the markup below.
@@ -27,13 +34,10 @@ const Header = (title, date, temp) => {
   //  </div>
   //
 }
-
+console.log(Header('title', 'date', 'temp'))
 const headerAppender = (selector) => {
+   document.querySelector(selector).appendChild(Header('title', 'date', 'temp'));
   
-  // header.appendChild(date);
-  // header.appendChild(title);
-  // header.appendChild(temp);
-  // headerContainer.appendChild(header);
   
   // TASK 2
   // ---------------------
