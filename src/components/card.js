@@ -1,4 +1,5 @@
 import axios from "axios";
+import { articles } from "../mocks/data";
 
 const Card = (article) => {
   const card = document.createElement('div');
@@ -15,14 +16,16 @@ const Card = (article) => {
 
   card.appendChild(headline);
   card.appendChild(author);
-  card.appendChild(authorName);
   author.appendChild(imgContainer);
   imgContainer.appendChild(image);
+  author.appendChild(authorName);
 
+  console.log(article)
   headline.textContent = article.headline;
-  image.src = article.authorPhoto;
-  authorName.textContent = `By ${article.authorName}`;
-
+  image.src = article['authorPhoto'];
+  authorName.textContent = article.authorName;
+  
+// console.log(article.javascript);
 card.addEventListener("click" , () => {
   console.log(headline);
 })
@@ -47,10 +50,19 @@ return card;
   // </div>
   //
 }
+
 const cardAppender = (selector) => {
   axios.get('http://localhost:5001/api/articles')
   .then(res => {
-    document.querySelector(selector).appendChild(Card(res.data.articles))
+    // console.log('data', res.data.articles); // put loop here
+    Object.keys(res.data.articles).forEach(article => {
+      console.log(res.data.articles[article]);
+      for (let i = 0; i < res.data.articles[article].length; i++) {
+        document.querySelector(selector).appendChild(Card(res.data.articles[article][i]));
+      }
+      // document.querySelector(selector).appendChild(Card(res.data.article))
+    });
+     // make this part of loop
   })
   .catch(err => {
     console.log(err);
